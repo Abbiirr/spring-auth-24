@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -25,6 +26,7 @@ public class SecurityConfig {
                 )
                 .formLogin(Customizer.withDefaults())   //once you define such config, you need to define the login strategy
                 .oauth2Login(Customizer.withDefaults())
+                .addFilterBefore(new RobotFilter(), UsernamePasswordAuthenticationFilter.class )
                 .build();
     }
 
