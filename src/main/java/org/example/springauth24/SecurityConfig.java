@@ -26,7 +26,8 @@ public class SecurityConfig {
                 )
                 .formLogin(Customizer.withDefaults())   //once you define such config, you need to define the login strategy
                 .oauth2Login(Customizer.withDefaults())
-                .addFilterBefore(new RobotFilter(), UsernamePasswordAuthenticationFilter.class )
+                .addFilterBefore(new RobotFilter(), UsernamePasswordAuthenticationFilter.class)
+                .authenticationProvider(new CustomAuthenticationProvider())
                 .build();
     }
 
