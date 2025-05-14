@@ -18,10 +18,13 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(authorize -> authorize
-                .requestMatchers("/private").authenticated()
-                .anyRequest().permitAll()
+                        .requestMatchers("/").permitAll()
+                        .requestMatchers("/error").permitAll()
+                        .requestMatchers("/woke").permitAll()
+                        .anyRequest().authenticated()
                 )
                 .formLogin(Customizer.withDefaults())   //once you define such config, you need to define the login strategy
+                .oauth2Login(Customizer.withDefaults())
                 .build();
     }
 

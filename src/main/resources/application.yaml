@@ -1,3 +1,10 @@
 spring:
   application:
     name: spring-auth-24
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 1035685876869-kq6bt1upu7euq083eqt2inocd7heavp0.apps.googleusercontent.com
+            client-secret: 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
