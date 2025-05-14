@@ -25,5 +25,16 @@ public class SecurityConfig {
                 .build();
     }
 
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return new InMemoryUserDetailsManager(
+                User.builder()
+                        .username("user")
+                        .password("{noop}password")
+                        .authorities("user")
+                        .build()
+        );
+    }
+
 
 }
